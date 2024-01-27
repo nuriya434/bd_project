@@ -53,6 +53,13 @@ CREATE TABLE Purchases (
     purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+--м:м
+CREATE TABLE SessionCustomers (
+    session_id INTEGER REFERENCES Sessions(session_id),
+    customer_id INTEGER REFERENCES Customers(customer_id),
+    PRIMARY KEY (session_id, customer_id)
+);
+
 INSERT INTO Movies (title, release_year, genre, director, description, actors_cast) VALUES
 ('Аватар', 2009, 'Фантастика', 'Джеймс Кэмерон', 'ывший морпех Джейк Салли прикован к инвалидному креслу. Несмотря на немощное тело, Джейк в душе по-прежнему остается воином. Он получает задание совершить путешествие в несколько световых лет к базе землян на планете Пандора, где корпорации добывают редкий минерал, имеющий огромное значение для выхода Земли из энергетического кризиса.', 'Сэм Уортингтон, Зои Салдана'),
 ('Исходный код', 2008, 'Триллер', 'Дункан Джонс', 'Студент-программист оказывается в теле другого человека и узнает, что должен предотвратить теракт.', 'Джейк Джилленхол, Мишель Монахэн'),
